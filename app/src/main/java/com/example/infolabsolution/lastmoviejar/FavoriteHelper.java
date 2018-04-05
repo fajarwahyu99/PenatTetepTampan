@@ -15,11 +15,11 @@ import static com.example.infolabsolution.lastmoviejar.DatabaseContract.Favorite
 import static com.example.infolabsolution.lastmoviejar.DatabaseContract.FavoriteColumns.POSTER;
 import static com.example.infolabsolution.lastmoviejar.DatabaseContract.FavoriteColumns.RELEASE_DATE;
 import static com.example.infolabsolution.lastmoviejar.DatabaseContract.FavoriteColumns.TITLE;
-import static com.example.infolabsolution.lastmoviejar.DatabaseContract.TABLE_MOVIE;
+
 
 
 public class FavoriteHelper {
-    private static String DATABASE_TABLE = TABLE_MOVIE;
+    private static String DATABASE_TABLE = BuildConfig.TABLE_MOVIE;
     private Context context;
     private DatabaseHelper dataBaseHelper;
 
@@ -73,7 +73,7 @@ public class FavoriteHelper {
     }
 
     public int delete(int id){
-        return database.delete(TABLE_MOVIE, _ID + " = '"+id+"'", null);
+        return database.delete(BuildConfig.TABLE_MOVIE, _ID + " = '"+id+"'", null);
     }
 
 

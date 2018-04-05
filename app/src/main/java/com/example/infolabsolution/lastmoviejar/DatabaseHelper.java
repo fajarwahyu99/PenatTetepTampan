@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static String DATABASE_NAME = "movie_favorite_db";
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_TABLE_FAVORITE = String.format("CREATE TABLE %s"
                     + " (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -16,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL)",
-            DatabaseContract.TABLE_MOVIE,
+            BuildConfig.TABLE_MOVIE,
             DatabaseContract.FavoriteColumns._ID,
             DatabaseContract.FavoriteColumns.TITLE,
             DatabaseContract.FavoriteColumns.DESCRIPTION,
@@ -25,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     );
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, BuildConfig.DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TABLE_MOVIE);
+        db.execSQL("DROP TABLE IF EXISTS " + BuildConfig.TABLE_MOVIE);
         onCreate(db);
     }
 }

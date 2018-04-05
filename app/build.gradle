@@ -19,6 +19,18 @@ android {
         buildTypes.each {
             it.buildConfigField 'String', 'API_KEY', '"92fc8095e11194d676367347621d94c0"'
             it.buildConfigField 'String', 'URL_POSTER', '"http://image.tmdb.org/t/p/w185"'
+            it.buildConfigField 'String', 'BASE_URL', '"http://api.themoviedb.org/3/"'
+            it.buildConfigField 'String', 'KEY_UPCOMING', '"upcoming"'
+            it.buildConfigField 'String', 'KEY_DAILY', '"daily"'
+            it.buildConfigField 'String', 'PREF_NAME', '"UserPref"'
+            it.buildConfigField 'String', 'TYPE_ONE_TIME', '"OneTimeAlarm"'
+            it.buildConfigField 'String', 'TYPE_REPEATING', '"RepeatingAlarm"'
+            it.buildConfigField 'String', 'EXTRA_MESSAGE', '"message"'
+            it.buildConfigField 'String', 'EXTRA_TYPE', '"type"'
+            it.buildConfigField 'String', 'TABLE_MOVIE', '"favoritesdb"'
+            it.buildConfigField 'String', 'AUTHORITY', '"com.example.infolabsolution.lastmoviejar"'
+
+            it.buildConfigField 'String', 'DATABASE_NAME', '"moviesfilmfavorite_db"'
     }
 }}
 

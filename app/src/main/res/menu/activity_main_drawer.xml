@@ -12,14 +12,7 @@
             android:id="@+id/up_coming"
             android:icon="@drawable/video"
             android:title="@string/up_coming" />
-        <item
-            android:id="@+id/favorite"
-            android:icon="@drawable/fast"
-            android:title="@string/favorite" />
-        <item
-            android:id="@+id/search"
-            android:icon="@drawable/loupe"
-            android:title="@string/search" />
+
     </group>
 
 </menu>

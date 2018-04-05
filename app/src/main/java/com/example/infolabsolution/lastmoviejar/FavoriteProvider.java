@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import com.example.infolabsolution.lastmoviejar.DatabaseContract;
 import com.example.infolabsolution.lastmoviejar.FavoriteHelper;
 
-import static com.example.infolabsolution.lastmoviejar.DatabaseContract.AUTHORITY;
 import static com.example.infolabsolution.lastmoviejar.DatabaseContract.CONTENT_URI;
 
 
@@ -25,10 +24,10 @@ public class FavoriteProvider extends ContentProvider {
 
     static {
 
-        sUriMatcher.addURI(AUTHORITY, DatabaseContract.TABLE_MOVIE, FAVORITE);
+        sUriMatcher.addURI(BuildConfig.AUTHORITY, BuildConfig.TABLE_MOVIE, FAVORITE);
 
-        sUriMatcher.addURI(AUTHORITY,
-                DatabaseContract.TABLE_MOVIE+ "/#",
+        sUriMatcher.addURI(BuildConfig.AUTHORITY,
+                BuildConfig.TABLE_MOVIE+ "/#",
                 FAVORITE_ID);
     }
 

@@ -121,8 +121,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (itemThatWasClickedId == R.id.action_settings) {
             Intent setIntent = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(setIntent);
-        }
-
+        } else if (itemThatWasClickedId == R.id.search) {
+            viewPager.setCurrentItem(2);
+        } else if (itemThatWasClickedId == R.id.star) {
+            viewPager.setCurrentItem(3);}
         return super.onOptionsItemSelected(item);
     }
 
@@ -135,10 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             viewPager.setCurrentItem(0);
         } else if (id == R.id.up_coming) {
             viewPager.setCurrentItem(1);
-        } else if (id == R.id.search) {
-            viewPager.setCurrentItem(2);
-        } else if (id == R.id.favorite) {
-            viewPager.setCurrentItem(3);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

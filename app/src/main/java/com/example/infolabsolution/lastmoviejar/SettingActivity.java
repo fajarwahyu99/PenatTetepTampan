@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -26,8 +27,8 @@ public class SettingActivity extends AppCompatActivity {
     @BindView(R.id.upcoming_notif) LinearLayout upcomingNotif;
     @BindView(R.id.setting_local) LinearLayout settingLocal;
     @BindView(R.id.switch_daily)
-    Switch dailySwitch;
-    @BindView(R.id.switch_upcoming) Switch upcomingSwitch;
+    CheckBox dailySwitch;
+    @BindView(R.id.switch_upcoming) CheckBox upcomingSwitch;
 
     private UpComingTask mUpComingTask;
     private DailyReminderMovie dailyReminderMovie;
@@ -73,12 +74,13 @@ public class SettingActivity extends AppCompatActivity {
                 if (isDaily){
                     dailySwitch.setEnabled(true);
                     appPreference.setDaily(isDaily);
-                    dailyReminderMovie.setRepeatingAlarm(this, DailyReminderMovie.TYPE_REPEATING,
+                    dailyReminderMovie.setRepeatingAlarm(this, BuildConfig.TYPE_REPEATING,
                             "17:41", getString(R.string.message_notif_daily));
+                    Toast.makeText(this, R.string.message_setup_daily, Toast.LENGTH_SHORT).show();
                 }else {
                     dailySwitch.setChecked(false);
                     appPreference.setDaily(isDaily);
-                    dailyReminderMovie.cancelAlarm(this, DailyReminderMovie.TYPE_REPEATING);
+                    dailyReminderMovie.cancelAlarm(this, BuildConfig.TYPE_REPEATING);
                 }
                 break;
             case R.id.switch_upcoming:

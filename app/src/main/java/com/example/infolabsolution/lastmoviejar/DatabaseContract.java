@@ -6,7 +6,6 @@ import android.provider.BaseColumns;
 
 
 public class DatabaseContract {
-    public static String TABLE_MOVIE = "favorite";
     public static final class FavoriteColumns implements BaseColumns {
         public static String TITLE = "title";
         public static String DESCRIPTION = "description";
@@ -14,10 +13,9 @@ public class DatabaseContract {
         public static String POSTER = "poster";
     }
 
-    public static final String AUTHORITY = "com.example.infolabsolution.lastmoviejar";
     public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
-            .authority(AUTHORITY)
-            .appendPath(TABLE_MOVIE)
+            .authority(BuildConfig.AUTHORITY)
+            .appendPath(BuildConfig.TABLE_MOVIE)
             .build();
     public static String getColumnString(Cursor cursor, String columnName) {
         return cursor.getString( cursor.getColumnIndex(columnName) );
