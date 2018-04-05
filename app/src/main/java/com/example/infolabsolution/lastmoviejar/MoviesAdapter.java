@@ -27,14 +27,14 @@ import static com.example.infolabsolution.lastmoviejar.BuildConfig.URL_POSTER;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
+    private Context context;
     private List<MovieModel> movies;
     private int rowLayout;
-    private Context context;
 
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.title) TextView movieTitle;
+        @BindView(R.id.title) TextView filmTitle;
         @BindView(R.id.subtitle) TextView data;
         @BindView(R.id.description) TextView movieDescription;
         @BindView(R.id.backbg) ImageView backbg;
@@ -60,7 +60,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, final int position) {
-        holder.movieTitle.setText(movies.get(position).getTitle());
+        holder.filmTitle.setText(movies.get(position).getTitle());
 
         String time = movies.get(position).getReleaseDate();
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");

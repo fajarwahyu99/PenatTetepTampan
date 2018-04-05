@@ -29,8 +29,14 @@ android {
             it.buildConfigField 'String', 'EXTRA_TYPE', '"type"'
             it.buildConfigField 'String', 'TABLE_MOVIE', '"favoritesdb"'
             it.buildConfigField 'String', 'AUTHORITY', '"com.example.infolabsolution.lastmoviejar"'
-
             it.buildConfigField 'String', 'DATABASE_NAME', '"moviesfilmfavorite_db"'
+
+            it.buildConfigField 'String', 'EXTRA_ID', '"extra_id"'
+            it.buildConfigField 'String', 'EXTRA_TITLE', '"extra_title"'
+            it.buildConfigField 'String', 'EXTRA_OVERVIEW', '"extra_overview"'
+            it.buildConfigField 'String', 'EXTRA_TIME', '"extra_time"'
+            it.buildConfigField 'String', 'EXTRA_POSTER', '"extra_poster"'
+            it.buildConfigField 'String', 'IS_FAVORITE', '"is_favorite"'
     }
 }}
 

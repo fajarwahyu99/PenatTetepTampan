@@ -17,11 +17,11 @@ public class DatabaseContract {
             .authority(BuildConfig.AUTHORITY)
             .appendPath(BuildConfig.TABLE_MOVIE)
             .build();
-    public static String getColumnString(Cursor cursor, String columnName) {
-        return cursor.getString( cursor.getColumnIndex(columnName) );
-    }
     public static int getColumnInt(Cursor cursor, String columnName) {
         return cursor.getInt( cursor.getColumnIndex(columnName) );
+    }
+    public static String getColumnString(Cursor cursor, String columnName) {
+        return cursor.getString( cursor.getColumnIndex(columnName) );
     }
     public static long getColumnLong(Cursor cursor, String columnName) {
         return cursor.getLong( cursor.getColumnIndex(columnName) );

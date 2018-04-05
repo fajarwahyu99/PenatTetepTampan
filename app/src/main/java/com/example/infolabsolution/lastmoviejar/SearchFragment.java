@@ -38,7 +38,6 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
     SearchView editsearch;
 
     public SearchFragment() {
-        // Required empty public constructor
     }
 
 
@@ -87,10 +86,10 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
                         if (child != null && gestureDetector.onTouchEvent(e)){
                             int position = rv.getChildAdapterPosition(child);
                             Intent i = new Intent(getContext(), DetailActivity.class);
-                            i.putExtra(DetailActivity.EXTRA_TITLE, movies.get(position).getTitle());
-                            i.putExtra(DetailActivity.EXTRA_OVERVIEW, movies.get(position).getOverview());
-                            i.putExtra(DetailActivity.EXTRA_TIME, movies.get(position).getReleaseDate());
-                            i.putExtra(DetailActivity.EXTRA_POSTER, movies.get(position).getPosterPath());
+                            i.putExtra(BuildConfig.EXTRA_TITLE, movies.get(position).getTitle());
+                            i.putExtra(BuildConfig.EXTRA_OVERVIEW, movies.get(position).getOverview());
+                            i.putExtra(BuildConfig.EXTRA_TIME, movies.get(position).getReleaseDate());
+                            i.putExtra(BuildConfig.EXTRA_POSTER, movies.get(position).getPosterPath());
                             getContext().startActivity(i);
                             }
                         return false;
@@ -110,8 +109,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
-                // Log error here since request failed
-                Log.e(TAG, t.toString());
+
             }
         });
     }

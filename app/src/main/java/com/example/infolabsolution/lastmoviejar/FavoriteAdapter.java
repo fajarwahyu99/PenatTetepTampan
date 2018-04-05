@@ -25,20 +25,21 @@ import static com.example.infolabsolution.lastmoviejar.BuildConfig.URL_POSTER;
 
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
-    private LinkedList<Favorite> listFavorites;
-    private Activity activity;
+    private LinkedList<Favorite> daftarFavorite;
     private Context context;
+    private Activity activity;
+
 
     public FavoriteAdapter(Context context) {
         this.context = context;
     }
 
     public LinkedList<Favorite> getListFavorite() {
-        return listFavorites;
+        return daftarFavorite;
     }
 
-    public void setListFavorite(LinkedList<Favorite> listFavorites) {
-        this.listFavorites = listFavorites;
+    public void setListFavorite(LinkedList<Favorite> daftarFavorite) {
+        this.daftarFavorite = daftarFavorite;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,9 +50,9 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        holder.movieTitle.setText(listFavorites.get(position).getTitle());
+        holder.filmTitle.setText(daftarFavorite.get(position).getTitle());
 
-        String time = listFavorites.get(position).getRelease_date();
+        String time = daftarFavorite.get(position).getRelease_date();
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
@@ -63,8 +64,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             e.printStackTrace();
         }
 
-        holder.movieDescription.setText(listFavorites.get(position).getOverview());
-        Glide.with(context).load(URL_POSTER + listFavorites.get(position).getPoster()).into(holder.backbg);
+        holder.movieDescription.setText(daftarFavorite.get(position).getOverview());
+        Glide.with(context).load(URL_POSTER + daftarFavorite.get(position).getPoster()).into(holder.backbg);
 
 
         holder.RvMain.setOnClickListener(new View.OnClickListener() {
@@ -80,12 +81,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     private void pindahActivity(int position, View v) {
 
         Intent i = new Intent(v.getContext(), DetailActivity.class);
-        i.putExtra(DetailActivity.EXTRA_ID, listFavorites.get(position).getId());
-        i.putExtra(DetailActivity.EXTRA_TITLE, listFavorites.get(position).getTitle());
-        i.putExtra(DetailActivity.EXTRA_OVERVIEW, listFavorites.get(position).getOverview());
-        i.putExtra(DetailActivity.EXTRA_TIME, listFavorites.get(position).getRelease_date());
-        i.putExtra(DetailActivity.EXTRA_POSTER, listFavorites.get(position).getPoster());
-        i.putExtra(DetailActivity.IS_FAVORITE, 1);
+        i.putExtra(BuildConfig.EXTRA_ID, daftarFavorite.get(position).getId());
+        i.putExtra(BuildConfig.EXTRA_TITLE, daftarFavorite.get(position).getTitle());
+        i.putExtra(BuildConfig.EXTRA_OVERVIEW, daftarFavorite.get(position).getOverview());
+        i.putExtra(BuildConfig.EXTRA_TIME, daftarFavorite.get(position).getRelease_date());
+        i.putExtra(BuildConfig.EXTRA_POSTER, daftarFavorite.get(position).getPoster());
+        i.putExtra(BuildConfig.IS_FAVORITE, 1);
         v.getContext().startActivity(i);
 
     }
@@ -98,7 +99,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
-        @BindView(R.id.title) TextView movieTitle;
+        @BindView(R.id.title) TextView filmTitle;
         @BindView(R.id.subtitle) TextView data;
         @BindView(R.id.description) TextView movieDescription;
         @BindView(R.id.backbg) ImageView backbg;

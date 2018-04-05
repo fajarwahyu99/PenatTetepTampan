@@ -26,7 +26,7 @@ public class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFa
     private ArrayList<Favorite> list;
     private Context mContext;
     private int mAppWidgetId;
-    private FavoriteHelper favoriteHelper;
+    private FavoriteHelper favoHelper;
 
     public StackRemoteViewsFactory(Context context, Intent intent) {
         mContext = context;
@@ -41,10 +41,10 @@ public class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public void onDataSetChanged() {
-        favoriteHelper = new FavoriteHelper(mContext);
-        favoriteHelper.open();
+        favoHelper = new FavoriteHelper(mContext);
+        favoHelper.open();
         list = new ArrayList<>();
-        list.addAll(favoriteHelper.query());
+        list.addAll(favoHelper.query());
     }
 
     @Override
@@ -55,7 +55,6 @@ public class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFa
     @Override
     public int getCount() {
         if (list.size() == 0){
-            Log.d("get count" , "list 0");
         }
         return list.size();
     }

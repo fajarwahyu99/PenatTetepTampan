@@ -42,7 +42,7 @@ public class DailyReminderMovie extends BroadcastReceiver {
     }
 
     private void showAlarmNotification(Context context, String title, String message, int notifId) {
-        NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManagerNotify = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -58,7 +58,7 @@ public class DailyReminderMovie extends BroadcastReceiver {
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(alarmSound);
 
-        notificationManagerCompat.notify(notifId, builder.build());
+        notificationManagerNotify.notify(notifId, builder.build());
     }
 
     public void setOneTimeAlarm(Context context, String type, String date, String time, String message) {

@@ -31,11 +31,11 @@ public class FavoriteProvider extends ContentProvider {
                 FAVORITE_ID);
     }
 
-    private FavoriteHelper favoriteHelper;
+    private FavoriteHelper favoHelper;
     @Override
     public boolean onCreate() {
-        favoriteHelper = new FavoriteHelper(getContext());
-        favoriteHelper.open();
+        favoHelper = new FavoriteHelper(getContext());
+        favoHelper.open();
         return true;
     }
 
@@ -45,10 +45,10 @@ public class FavoriteProvider extends ContentProvider {
         Cursor cursor;
         switch(sUriMatcher.match(uri)){
             case FAVORITE:
-                cursor = favoriteHelper.queryProvider();
+                cursor = favoHelper.queryProvider();
                 break;
             case FAVORITE_ID:
-                cursor = favoriteHelper.queryByIdProvider(uri.getLastPathSegment());
+                cursor = favoHelper.queryByIdProvider(uri.getLastPathSegment());
                 break;
             default:
                 cursor = null;
@@ -75,7 +75,7 @@ public class FavoriteProvider extends ContentProvider {
 
         switch (sUriMatcher.match(uri)){
             case FAVORITE:
-                added = favoriteHelper.insertProvider(values);
+                added = favoHelper.insertProvider(values);
                 break;
             default:
                 added = 0;
@@ -93,7 +93,7 @@ public class FavoriteProvider extends ContentProvider {
         int deleted;
         switch (sUriMatcher.match(uri)) {
             case FAVORITE_ID:
-                deleted =  favoriteHelper.deleteProvider(uri.getLastPathSegment());
+                deleted =  favoHelper.deleteProvider(uri.getLastPathSegment());
                 break;
             default:
                 deleted = 0;

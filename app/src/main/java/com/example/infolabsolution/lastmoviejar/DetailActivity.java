@@ -26,74 +26,69 @@ import butterknife.ButterKnife;
 import static com.example.infolabsolution.lastmoviejar.BuildConfig.URL_POSTER;
 
 public class DetailActivity extends AppCompatActivity{
-    public static String EXTRA_ID = "extra_id";
-    public static String EXTRA_TITLE = "extra_title";
-    public static String EXTRA_OVERVIEW = "extra_overview";
-    public static String EXTRA_TIME = "extra_time";
-    public static String EXTRA_POSTER = "extra_poster";
-    public static String IS_FAVORITE = "is_favorite";
-
-    @BindView(R.id.title) TextView tvTitle;
-    @BindView(R.id.overview) TextView tvOverview;
-    @BindView(R.id.time) TextView tvTime;
-    @BindView(R.id.poster) ImageView imgPoster;
-    @BindView(R.id.btn_favorite) Button btnFovorite;
-
     Context context;
     private FavoriteHelper favoriteHelper;
     private boolean isFavorite = false;
     private int favorite;
+    @BindView(R.id.title) TextView teksTitle;
+    @BindView(R.id.overview) TextView teksOverview;
+    @BindView(R.id.time) TextView teksTime;
+    @BindView(R.id.poster) ImageView imagePoster;
+    @BindView(R.id.btn_favorite) Button bttnFavor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        ActionBar ab = getSupportActionBar();
-        assert ab != null;
-        ab.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionbar = getSupportActionBar();
+        assert actionbar != null;
+        actionbar.setDisplayHomeAsUpEnabled(true);
 
-        ButterKnife.bind(this);
-        int id = getIntent().getIntExtra(EXTRA_ID, 0);
-        String title = getIntent().getStringExtra(EXTRA_TITLE);
-        String overview = getIntent().getStringExtra(EXTRA_OVERVIEW);
-        String time = getIntent().getStringExtra(EXTRA_TIME);
-        String poster = getIntent().getStringExtra(EXTRA_POSTER);
-        tvTitle.setText(title);
-        tvOverview.setText(overview);
-        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+
+        int id = getIntent().getIntExtra(BuildConfig.EXTRA_ID, 0);
+        String title = getIntent().getStringExtra(BuildConfig.EXTRA_TITLE);
+        String overview = getIntent().getStringExtra(BuildConfig.EXTRA_OVERVIEW);
+        String time = getIntent().getStringExtra(BuildConfig.EXTRA_TIME);
+        String poster = getIntent().getStringExtra(BuildConfig.EXTRA_POSTER);
+        teksTitle.setText(title);
+        teksOverview.setText(overview);
         Date date = null;
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
         try {
             date = parser.parse(time);
             SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMM d, yyyy");
             String formattedDate = formatter.format(date);
-            tvTime.setText(formattedDate);
+            teksTime.setText(formattedDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Glide.with(this).load(URL_POSTER+poster).into(imgPoster);
+        Glide.with(this).load(URL_POSTER+poster).into(imagePoster);
 
 
 
         favoriteHelper = new FavoriteHelper(this);
         favoriteHelper.open();
 
-        favorite = getIntent().getIntExtra(IS_FAVORITE, 0);
+        favorite = getIntent().getIntExtra(BuildConfig.IS_FAVORITE, 0);
         if (favorite == 1){
             isFavorite = true;
-            btnFovorite.setText("hapus favorite");
+            bttnFavor.setText("hapus favorite");
         }
 
-        btnFovorite.setOnClickListener(new View.OnClickListener() {
+        bttnFavor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isFavorite){
                     addFavorit();
-                    Toast.makeText(DetailActivity.this, "Berhasil Difavoritkan", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DetailActivity.this, "Sukses Difavortikan", Toast.LENGTH_LONG).show();
                 }else {
                     deleteFavorite();
-                    Toast.makeText(DetailActivity.this, "Favorite Dihapus", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DetailActivity.this, "Favorite Telah Dihapus", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -110,10 +105,10 @@ public class DetailActivity extends AppCompatActivity{
 
     private void addFavorit(){
         Favorite favorites = new Favorite();
-        favorites.setTitle(getIntent().getStringExtra(EXTRA_TITLE));
-        favorites.setOverview(getIntent().getStringExtra(EXTRA_OVERVIEW));
-        favorites.setRelease_date(getIntent().getStringExtra(EXTRA_TIME));
-        favorites.setPoster(getIntent().getStringExtra(EXTRA_POSTER));
+        favorites.setTitle(getIntent().getStringExtra(BuildConfig.EXTRA_TITLE));
+        favorites.setOverview(getIntent().getStringExtra(BuildConfig.EXTRA_OVERVIEW));
+        favorites.setRelease_date(getIntent().getStringExtra(BuildConfig.EXTRA_TIME));
+        favorites.setPoster(getIntent().getStringExtra(BuildConfig.EXTRA_POSTER));
         favoriteHelper.insert(favorites);
 
 
@@ -123,7 +118,7 @@ public class DetailActivity extends AppCompatActivity{
     }
 
     private void deleteFavorite(){
-        favoriteHelper.delete(getIntent().getIntExtra(EXTRA_ID, 0));
+        favoriteHelper.delete(getIntent().getIntExtra(BuildConfig.EXTRA_ID, 0));
 
         int widgetIDs[] = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(), ImageBannerWidget.class));
         for (int id : widgetIDs)

@@ -37,20 +37,19 @@ public class UpcomingFragment extends Fragment {
 
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        loadMovie();
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
         setRetainInstance(true);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        loadMovie();
     }
 
     private void loadMovie() {
@@ -78,13 +77,13 @@ public class UpcomingFragment extends Fragment {
                         View child = rv.findChildViewUnder(e.getX(), e.getY());
                         if (child != null && gestureDetector.onTouchEvent(e)){
                             int position = rv.getChildAdapterPosition(child);
-                            Intent i = new Intent(getContext(), DetailActivity.class);
-                            i.putExtra(DetailActivity.EXTRA_TITLE, movies.get(position).getId());
-                            i.putExtra(DetailActivity.EXTRA_TITLE, movies.get(position).getTitle());
-                            i.putExtra(DetailActivity.EXTRA_OVERVIEW, movies.get(position).getOverview());
-                            i.putExtra(DetailActivity.EXTRA_TIME, movies.get(position).getReleaseDate());
-                            i.putExtra(DetailActivity.EXTRA_POSTER, movies.get(position).getPosterPath());
-                            getContext().startActivity(i);
+                            Intent datamovies = new Intent(getContext(), DetailActivity.class);
+                            datamovies.putExtra(BuildConfig.EXTRA_TITLE, movies.get(position).getId());
+                            datamovies.putExtra(BuildConfig.EXTRA_TITLE, movies.get(position).getTitle());
+                            datamovies.putExtra(BuildConfig.EXTRA_OVERVIEW, movies.get(position).getOverview());
+                            datamovies.putExtra(BuildConfig.EXTRA_TIME, movies.get(position).getReleaseDate());
+                            datamovies.putExtra(BuildConfig.EXTRA_POSTER, movies.get(position).getPosterPath());
+                            getContext().startActivity(datamovies);
                         }
                         return false;
                     }
@@ -103,7 +102,7 @@ public class UpcomingFragment extends Fragment {
 
             @Override
             public void onFailure(Call<MovieResponse>call, Throwable t) {
-                // Log error here since request failed
+
                 Log.e(TAG, t.toString());
             }
         });

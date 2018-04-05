@@ -87,16 +87,16 @@ public class UpComingReminderMovie extends GcmTaskService {
     }
 
     private void showNotification(Context context, String title, String message, int notifId, MovieModel item) {
-        NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManagerNotify = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         String time = item.getReleaseDate();
         String poster = item.getPosterPath();
         Intent intent = new Intent(context, DetailActivity.class);
-        intent.putExtra(DetailActivity.EXTRA_TITLE, title);
-        intent.putExtra(DetailActivity.EXTRA_OVERVIEW, message);
-        intent.putExtra(DetailActivity.EXTRA_TIME, time);
-        intent.putExtra(DetailActivity.EXTRA_POSTER, poster);
+        intent.putExtra(BuildConfig.EXTRA_TITLE, title);
+        intent.putExtra(BuildConfig.EXTRA_OVERVIEW, message);
+        intent.putExtra(BuildConfig.EXTRA_TIME, time);
+        intent.putExtra(BuildConfig.EXTRA_POSTER, poster);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, notifId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
@@ -109,7 +109,7 @@ public class UpComingReminderMovie extends GcmTaskService {
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(alarmSound);
 
-        notificationManagerCompat.notify(notifId, builder.build());
+        notificationManagerNotify.notify(notifId, builder.build());
     }
 }
 

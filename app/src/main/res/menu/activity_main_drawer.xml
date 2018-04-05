@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/now_playing"
-            android:icon="@drawable/youtube"
-            android:title="@string/now_playing" />
-        <item
-            android:id="@+id/up_coming"
-            android:icon="@drawable/video"
-            android:title="@string/up_coming" />
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/now_playing"-->
+            <!--android:icon="@drawable/youtube"-->
+            <!--android:title="@string/now_playing" />-->
+        <!--<item-->
+            <!--android:id="@+id/up_coming"-->
+            <!--android:icon="@drawable/video"-->
+            <!--android:title="@string/up_coming" />-->
 
-    </group>
+    <!--</group>-->
 
 </menu>

@@ -1,35 +1,36 @@
 package com.example.infolabsolution.lastmoviejar;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.Context;
 
 
 
 public class AppPreference {
 
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor sharededitor;
 
     public AppPreference(Context context) {
-        preferences = context.getSharedPreferences(BuildConfig.PREF_NAME, Context.MODE_PRIVATE);
-        editor = preferences.edit();
+        sharedpreferences = context.getSharedPreferences(BuildConfig.PREF_NAME, Context.MODE_PRIVATE);
+        sharededitor = sharedpreferences.edit();
     }
-    public void setDaily(boolean status){
-        editor.putBoolean(BuildConfig.KEY_DAILY, status);
-        editor.apply();
-    }
-    public void setUpcoming(boolean status){
-        editor.putBoolean(BuildConfig.KEY_UPCOMING, status);
-        editor.apply();
-    }
-
-
 
     public boolean isUpcoming(){
-        return preferences.getBoolean(BuildConfig.KEY_UPCOMING,false);
+        return sharedpreferences.getBoolean(BuildConfig.KEY_UPCOMING,false);
     }
 
     public boolean isDaily(){
-        return preferences.getBoolean(BuildConfig.KEY_DAILY, false);
+        return sharedpreferences.getBoolean(BuildConfig.KEY_DAILY, false);
     }
+
+    public void setDaily(boolean status){
+        sharededitor.putBoolean(BuildConfig.KEY_DAILY, status);
+        sharededitor.apply();
+    }
+    public void setUpcoming(boolean status){
+        sharededitor.putBoolean(BuildConfig.KEY_UPCOMING, status);
+        sharededitor.apply();
+    }
+
+
 }

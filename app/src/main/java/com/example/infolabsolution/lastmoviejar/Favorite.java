@@ -38,6 +38,14 @@ public class Favorite implements Parcelable {
 
     }
 
+    public String getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -47,13 +55,6 @@ public class Favorite implements Parcelable {
     }
 
 
-    public String getRelease_date() {
-        return release_date;
-    }
-
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
-    }
 
     public String getOverview() {
         return overview;
@@ -62,7 +63,6 @@ public class Favorite implements Parcelable {
     public void setOverview(String overview) {
         this.overview = overview;
     }
-
 
     public String getPoster() {
         return poster;

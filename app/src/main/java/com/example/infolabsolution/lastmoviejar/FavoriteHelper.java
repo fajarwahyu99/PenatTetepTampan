@@ -21,7 +21,7 @@ import static com.example.infolabsolution.lastmoviejar.DatabaseContract.Favorite
 public class FavoriteHelper {
     private static String DATABASE_TABLE = BuildConfig.TABLE_MOVIE;
     private Context context;
-    private DatabaseHelper dataBaseHelper;
+    private DatabaseHelper dataHelper;
 
     private SQLiteDatabase database;
 
@@ -30,13 +30,13 @@ public class FavoriteHelper {
     }
 
     public FavoriteHelper open() throws SQLException {
-        dataBaseHelper = new DatabaseHelper(context);
-        database = dataBaseHelper.getWritableDatabase();
+        dataHelper = new DatabaseHelper(context);
+        database = dataHelper.getWritableDatabase();
         return this;
     }
 
     public void close(){
-        dataBaseHelper.close();
+        dataHelper.close();
     }
 
     public ArrayList<Favorite> query(){

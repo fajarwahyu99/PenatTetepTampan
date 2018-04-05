@@ -24,7 +24,7 @@ public class FavoriteFragment extends Fragment {
 
     RecyclerView rvFavorite;
     private LinkedList<Favorite> list;
-    private FavoriteHelper favoriteHelper;
+    private FavoriteHelper favoHelper;
     private FavoriteAdapter favoriteAdapter;
 
 
@@ -66,7 +66,7 @@ public class FavoriteFragment extends Fragment {
 
         @Override
         protected ArrayList<Favorite> doInBackground(Void... voids) {
-            return favoriteHelper.query();
+            return favoHelper.query();
         }
 
 
@@ -75,8 +75,8 @@ public class FavoriteFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (favoriteHelper != null){
-            favoriteHelper.close();
+        if (favoHelper != null){
+            favoHelper.close();
         }
     }
 
@@ -86,8 +86,8 @@ public class FavoriteFragment extends Fragment {
         rvFavorite.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvFavorite.setHasFixedSize(true);
 
-        favoriteHelper = new FavoriteHelper(getActivity());
-        favoriteHelper.open();
+        favoHelper = new FavoriteHelper(getActivity());
+        favoHelper.open();
 
         list = new LinkedList<>();
 

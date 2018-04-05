@@ -28,7 +28,7 @@
             <ImageView
                 android:id="@+id/poster"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="450dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/ic_launcher"
                 android:scaleType="fitXY"/>
@@ -51,7 +51,7 @@
             android:text="@string/content_overview"
             android:layout_marginBottom="8dp"
             android:lineSpacingMultiplier="1"
-            tools:text="Overview Text Berisi keterangan Movie titik titik. Overview Text Berisi keterangan Movie titik titik ...Overview Text Berisi keterangan Movie titik titik ...Overview Text Berisi keterangan Movie titik titik ..."
+            tools:text=" Ketampanan yang hakiki"
             android:textColor="@android:color/black"/>
         <TextView
             style="@style/TextContent.Subtitle"
@@ -73,16 +73,18 @@
                 <TextView
                     android:id="@+id/time"
                     style="@style/TextSpec.Value"
-                    tools:text="Kamis, 18 November 1995"
+                    tools:text="Senin, 2 April 2018"
                     android:text="@string/content_time"/>
             </TableRow>
         </TableLayout>
+
         <Button
             android:id="@+id/btn_favorite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/favorite"
-            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/star" />
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

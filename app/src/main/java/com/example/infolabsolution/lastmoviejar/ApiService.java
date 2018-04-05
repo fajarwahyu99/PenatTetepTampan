@@ -15,11 +15,12 @@ public interface ApiService {
     @GET("search/movie?api_key="+ BuildConfig.API_KEY)
     Call<MovieResponse> getItemSearch(@Query("query") String movie_name);
 
+    @GET("movie/upcoming")
+    Call<MovieResponse> getUpcoming(@Query("api_key") String apiKey);
+
     @GET("movie/now_playing")
     Call<MovieResponse> getNowPlaying(@Query("api_key") String apiKey);
 
-    @GET("movie/upcoming")
-    Call<MovieResponse> getUpcoming(@Query("api_key") String apiKey);
 
 
 }
